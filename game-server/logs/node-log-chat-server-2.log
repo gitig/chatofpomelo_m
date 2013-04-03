@@ -1,0 +1,20 @@
+[2013-03-28 22:42:29.199] [INFO] /node_modules/pomelo/lib/application.js - application inited: "chat-server-2"
+[2013-03-28 22:42:33.622] [INFO] console - info: 'socket.io started'
+[2013-03-28 22:42:34.254] [INFO] /node_modules/pomelo/node_modules/pomelo-admin/lib/consoleService.js - try to connect master: "chat", "127.0.0.1", 3005
+[2013-03-28 22:42:36.042] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" enter after start...
+[2013-03-28 22:42:36.049] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" finish start
+[2013-03-29 09:53:45.311] [INFO] /node_modules/pomelo/lib/application.js - application inited: "chat-server-2"
+[2013-03-29 09:53:47.516] [INFO] console - info: 'socket.io started'
+[2013-03-29 09:53:47.642] [INFO] /node_modules/pomelo/node_modules/pomelo-admin/lib/consoleService.js - try to connect master: "chat", "127.0.0.1", 3005
+[2013-03-29 09:53:47.870] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" enter after start...
+[2013-03-29 09:53:47.873] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" finish start
+[2013-03-30 13:11:14.760] [INFO] /node_modules/pomelo/lib/application.js - application inited: "chat-server-2"
+[2013-03-30 13:11:18.026] [INFO] console - info: 'socket.io started'
+[2013-03-30 13:11:18.175] [INFO] /node_modules/pomelo/node_modules/pomelo-admin/lib/consoleService.js - try to connect master: "chat", "127.0.0.1", 3005
+[2013-03-30 13:11:18.642] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" enter after start...
+[2013-03-30 13:11:18.646] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" finish start
+[2013-04-01 08:16:56.744] [INFO] /node_modules/pomelo/lib/application.js - application inited: "chat-server-2"
+[2013-04-01 08:17:00.319] [INFO] console - info: 'socket.io started'
+[2013-04-01 08:17:00.395] [INFO] /node_modules/pomelo/node_modules/pomelo-admin/lib/consoleService.js - try to connect master: "chat", "127.0.0.1", 3005
+[2013-04-01 08:17:00.532] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" enter after start...
+[2013-04-01 08:17:00.536] [INFO] /node_modules/pomelo/lib/application.js - "chat-server-2" finish start

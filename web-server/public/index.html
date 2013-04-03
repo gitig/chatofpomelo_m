@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+            chatofpomelo
+        </title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <script src="js/lib/jquery-1.8.0.min.js">
+         		
+        </script>
+        <script src="js/lib/socket.io.js">
+                		
+        </script>
+        <script src="js/lib/pomeloclient.js">
+                		
+        </script>
+        <script src="js/client.js">
+                		
+        </script>
+        <script src="js/pop.js">
+                		
+        </script>
+    </head>
+    
+    <body>
+        <div id="app">
+            <div id="loginView">
+                <div id="loginTitle">
+                    Chat of Pomelo
+                </div>
+
+                <!--Logon begin-->
+                <table>
+                    <tr>
+                        <td>
+                            <input id="logonUsername" type="text" placeholder="Username" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" id="logonPassword" placeholder="Password"/>
+                        </td>
+                    <tr>
+                        <td>
+                            <input id="logon" type='button' value="Logon" />
+                        </td>
+                    </tr>
+                </table>
+                <div id='logonHint' class="ErrorHint">
+                </div>
+                <!--Logon end-->
+
+                <!--Register begin-->
+                <table>
+                    <tr>
+                        <td>
+                            <input id="registerUsername" type="text" placeholder="Username" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="password" id="registerPassword" placeholder="Password"
+                                    />
+                        </td>
+                    <tr>
+                        <td>
+                            <input type="password" id="confirmPassword" placeholder="Confirm Password"
+                                    />
+                        </td>
+                    <tr>
+                        <td>
+                            <input id="register" type='button' value="Register" />
+                        </td>
+                    </tr>
+                </table>
+                <div id='registerHint' class="ErrorHint">
+                </div>
+                <!--Register end-->
+            </div>
+
+            <div id="channel">
+                You can create a new channel:
+                <input name="channels" type="text" id="newChannel" placeholder="enter new channel" />
+                <input type="button" id="createChannel" value="Go"/>
+                <br />
+                <span id="createChannelHint" class="ErrorHint"></span>
+                <br />
+                <hr />
+                <br />
+                <div id="roomList">
+                </div>
+            </div>
+
+            <div id="chatHistory">
+            </div>
+
+            <div id="toolbar">
+                <ul id="status">
+                    <li>
+                        users:
+                        <select name="users" id="usersList">
+                            <option value="*">
+                                all
+                            </option>
+                        </select>
+                    </li>
+                    <li>
+                        name:
+                        <span id="name">
+                        </span>
+                    </li>
+                    <li>
+                        room:
+                        <span id="room">
+                        </span>
+                    </li>
+                    <li>
+                        count:
+                        <span id="count">
+
+                        </span>
+                    </li>
+                </ul>
+                <input tabindex="1" type="text" id="entry" />
+            </div>
+        </div>
+
+
+        <div id="pop">
+            <div id="popHead">
+                <a id="popClose" title="close">Close</a>
+                <h2>
+                    Tip
+                </h2>
+            </div>
+            <div id="popContent">
+                <dl>
+                    <dd id="popIntro">
+                    </dd>
+                </dl>
+                <p id="popMore">
+                    No Tip Again
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
