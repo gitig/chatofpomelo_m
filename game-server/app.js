@@ -12,17 +12,17 @@ app.set('name', 'chatofpomelo');
 
 
 // app configure
-app.configure('production|development', function() {
-	// route configures
-	app.route('chat', routeUtil.chat);
+app.configure('production|development', function () {
+    // route configures
+    app.route('chat', routeUtil.chat);
 
-	// filter configures
-	app.filter(pomelo.timeout());
+    // filter configures
+    app.filter(pomelo.timeout());
 });
 
 // start app
 app.start();
 
-process.on('uncaughtException', function(err) {
-	console.error(' Caught exception: ' + err.stack);
+process.on('uncaughtException', function (err) {
+    console.error(' Caught exception: ' + err.stack);
 });

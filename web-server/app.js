@@ -148,7 +148,7 @@ app.post('/', function (req, res) {
         connection.query('select distinct time, user_from, target, message from chat_history' +
             ' where roomId = (?) ' +
             'group by time, user_from, target, message ' +
-            'order by id desc limit ?, ?', [roomId, count, 5], function(err, rows) {
+            'order by id desc limit ?, ?', [roomId, count, 5], function (err, rows) {
             if (err) throw err;
             // get the info array and send back.
             if (rows.length > 0) {

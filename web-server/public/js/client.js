@@ -13,7 +13,7 @@ var pomelo = window.pomelo,
     DUPLICATE_ERROR = "Please change your name to login.",
     ROOM_ID_EMPTY = "Please input the room id.",
     ROOM_ID_ERROR = "Bad character in ROOM id. Can only have letters, numbers, Chinese characters, and '_', 20 character max";
-    LOGON_PASSWORD_ERROR = "Password is WRONG!",
+LOGON_PASSWORD_ERROR = "Password is WRONG!",
     LOGON_NAME_ERROR = "The user is NOT exist!",
     LOGON_NAME_PASS_EMPTY = "Please input your USERNAME or PASSWORD!",
     LOGON_USER_EXIST = "User has logged on!",
@@ -273,10 +273,10 @@ function getAllChannels(username) {
             // serverType.fileName.methodName
             var route = "connector.entryHandler.queryChannels";
             pomelo.request(route, function (data) {
-            // the user has not logged on!
-            // show and initial channels.
-            showChannels();
-            initChannelList(data);
+                // the user has not logged on!
+                // show and initial channels.
+                showChannels();
+                initChannelList(data);
             });
         });
     });
@@ -315,7 +315,7 @@ $(document).ready(function () {
     });
 
     // when user leave current page send the current name to web server to delete.
-    window.onunload = function() {
+    window.onunload = function () {
         $.post("/", {loggedName: username});
     };
 
@@ -439,11 +439,11 @@ $(document).ready(function () {
     });
 
     // deal with history button click.
-    $("#showHistory").click(function() {
+    $("#showHistory").click(function () {
         // get the count of the message on the board
         var count = $("#chatHistory").find("table").length;
-        $.post('/', {rid: rid, showFlag: 1, count: count}, function(data) {
-            for(var i = 0, len = data.length; i < len; i++) {
+        $.post('/', {rid: rid, showFlag: 1, count: count}, function (data) {
+            for (var i = 0, len = data.length; i < len; i++) {
                 var time = data[i].time,
                     from = data[i].user_from,
                     name = data[i].target == '*' ? 'all' : data[i].target,

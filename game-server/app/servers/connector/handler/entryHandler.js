@@ -1,9 +1,9 @@
-module.exports = function(app) {
-	return new Handler(app);
+module.exports = function (app) {
+    return new Handler(app);
 };
 
-var Handler = function(app) {
-		this.app = app;
+var Handler = function (app) {
+    this.app = app;
 };
 
 var handler = Handler.prototype;
@@ -16,39 +16,36 @@ var handler = Handler.prototype;
  * @param  {Function} next    next stemp callback
  * @return {Void}
  */
-handler.enter = function(msg, session, next) {
-	var self = this;
-	var rid = msg.rid;
-	var uid = msg.username + '*' + rid
-	var sessionService = self.app.get('sessionService');
-	//duplicate log in
-	if( !! sessionService.getByUid(uid)) {
-		next(null, {
-			code: 500,
-			error: true
-		});
-		return;
-	}
+handler.enter = function (msg, session, next) {
+    var self = this;
+    var rid = msg.rid;
+    var uid = msg.username + '*' + rid
+    var sessionService = self.app.get('sessionService');
+    //duplicate log in
+    if (!!sessionService.getByUid(uid)) {
+        next(null, {
+            code: 500,
+            error: true
+        });
+        return;
+    }
 
-	session.bind(uid);
-	session.set('rid', rid);
-	session.push('rid', function(err) {
-		if(err) {
-			console.error('set rid for session service failed! error is : %j', err.stack);
-		}
-	});
-	session.on('closed', onUserLeave.bind(null, self.app));
+    session.bind(uid);
+    session.set('rid', rid);
+    session.push('rid', function (err) {
+        if (err) {
+            console.error('set rid for session service failed! error is : %j', err.stack);
+        }
+    });
+    session.on('closed', onUserLeave.bind(null, self.app));
 
-	//put user into channel
-	self.app.rpc.chat.chatRemote.add(session, uid, self.app.get('serverId'), rid, true, function(users){
-		next(null, {
-			users:users
-		});
-	});
+    //put user into channel
+    self.app.rpc.chat.chatRemote.add(session, uid, self.app.get('serverId'), rid, true, function (users) {
+        next(null, {
+            users: users
+        });
+    });
 };
-
-
-
 
 
 /**
@@ -59,21 +56,20 @@ handler.enter = function(msg, session, next) {
  * @param  {Function} next    next stemp callback
  * @return {Void}
  */
-handler.queryChannels = function(msg, session, next) {
+handler.queryChannels = function (msg, session, next) {
     var self = this;
     self.app.rpcInvoke('chat-server-1', {
-        namespace:'user',
+        namespace: 'user',
         serverType: 'chat',
         service: 'chatRemote',
         method: 'getAllChannels',
         args: []
-    }, function(c){
+    }, function (c) {
         next(null, {
-            channels:c
+            channels: c
         });
     });
 };
-
 
 
 /**
@@ -83,9 +79,9 @@ handler.queryChannels = function(msg, session, next) {
  * @param {Object} session current session object
  *
  */
-var onUserLeave = function(app, session) {
-	if(!session || !session.uid) {
-		return;
-	}
-	app.rpc.chat.chatRemote.kick(session, session.uid, app.get('serverId'), session.get('rid'), null);
+var onUserLeave = function (app, session) {
+    if (!session || !session.uid) {
+        return;
+    }
+    app.rpc.chat.chatRemote.kick(session, session.uid, app.get('serverId'), session.get('rid'), null);
 };
