@@ -40,14 +40,9 @@ ChatRemote.prototype.add = function(uid, sid, name, flag, cb) {
 ChatRemote.prototype.getAllChannels = function(cb) {
     var channels = this.channelService.channels;
     var array = [];
-    var userArray = [];
     for(var c in channels) {
-        userArray = this.channelService.getChannel(c).getMembers();
-        for(var i = 0, len = userArray.length; i < len; i++) {
-            userArray[i] = userArray[i].split('*')[0];
-        }
-        //var len = this.channelService.getChannel(c).getMembers().length;
-        array.push({ 'channel':c, 'users': userArray });
+        var len = this.channelService.getChannel(c).getMembers().length;
+        array.push({ 'channel':c, 'length': len });
     }
     cb(array);
 };

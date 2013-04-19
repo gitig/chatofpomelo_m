@@ -13,7 +13,7 @@ var pomelo = window.pomelo,
     DUPLICATE_ERROR = "Please change your name to login.",
     ROOM_ID_EMPTY = "Please input the room id.",
     ROOM_ID_ERROR = "Bad character in ROOM id. Can only have letters, numbers, Chinese characters, and '_', 20 character max";
-LOGON_PASSWORD_ERROR = "Password is WRONG!",
+    LOGON_PASSWORD_ERROR = "Password is WRONG!",
     LOGON_NAME_ERROR = "The user is NOT exist!",
     LOGON_NAME_PASS_EMPTY = "Please input your USERNAME or PASSWORD!",
     LOGON_USER_EXIST = "User has logged on!",
@@ -257,7 +257,7 @@ function initChannelList(data) {
 
             td = $(document.createElement("td"));
             tr.append(td);
-            td.text(channels[i].users.length); // set the online count.
+            td.text(channels[i].length); // set the online count.
         }
     }
 }
@@ -273,26 +273,10 @@ function getAllChannels(username) {
             // serverType.fileName.methodName
             var route = "connector.entryHandler.queryChannels";
             pomelo.request(route, function (data) {
-                // get all channels
-                channels = data.channels;
-                var index = -1,
-                    i, len;
-
-                // walk through all channels and detect the user has logged on or not.
-                /*for (i = 0, len = channels.length; i < len; i++) {
-                    index = channels[i].users.indexOf(username);
-                    if (index >= 0) {
-                        showLogonHint(LOGON_USER_EXIST);
-                        break;
-                    }
-                }*/
-
-                // the user has not logged on!
-                if (index < 0) {
-                    // show and initial channels.
-                    showChannels();
-                    initChannelList(data);
-                }
+            // the user has not logged on!
+            // show and initial channels.
+            showChannels();
+            initChannelList(data);
             });
         });
     });
@@ -451,6 +435,33 @@ $(document).ready(function () {
                     setCount(); // update the count.
                 });
             });
+        });
+    });
+
+    // deal with history button click.
+    $("#showHistory").click(function() {
+        // get the count of the message on the board
+        var count = $("#chatHistory").find("table").length;
+        $.post('/', {rid: rid, showFlag: 1, count: count}, function(data) {
+            for(var i = 0, len = data.length; i < len; i++) {
+                var time = data[i].time,
+                    from = data[i].user_from,
+                    name = data[i].target == '*' ? 'all' : data[i].target,
+                    text = data[i].message;
+                // create the msg table and prepend to the div
+                var messageElement = $(document.createElement("table"));
+                messageElement.addClass("message");
+                // sanitize
+                text = util.toStaticHTML(text);
+                var content = '<tr>' + '  <td class="date">' + time + '</td>' + '  <td class="nick">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</td>' + '  <td class="msg-text">' + text + '</td>' + '</tr>';
+                messageElement.html(content);
+                //the log is the stream that we view
+                $("#chatHistory").prepend(messageElement);
+                $("#chatHistory").show();
+            }
+
+            base += increase;
+            scrollDown(base);
         });
     });
 

@@ -1,7 +1,8 @@
 var express = require('express'),
 // load the 'crypto' and 'mysql' module.
     crypto = require('crypto'),
-    mysql = require('mysql');
+    mysql = require('mysql'),
+    count = 1;
 
 var app = express.createServer();
 var onlineUsers = [];   // an array to store the online users.
@@ -135,6 +136,26 @@ app.post('/', function (req, res) {
     if (loggedName != null) {
         var index = onlineUsers.indexOf(loggedName);
         onlineUsers.splice(index, 1);
+    }
+
+
+    // process the show history request.
+    var showFlag = req.body.showFlag,
+        roomId = req.body.rid,
+        count = parseInt(req.body.count);
+    // get the data from database based on 'roomId'
+    if (showFlag == 1 && roomId != null) {
+        connection.query('select distinct time, user_from, target, message from chat_history' +
+            ' where roomId = (?) ' +
+            'group by time, user_from, target, message ' +
+            'order by id desc limit ?, ?', [roomId, count, 5], function(err, rows) {
+            if (err) throw err;
+            // get the info array and send back.
+            if (rows.length > 0) {
+                connection.end();
+                res.send(rows);
+            }
+        });
     }
 });
 
