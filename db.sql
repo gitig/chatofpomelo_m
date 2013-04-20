@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `chat_history`
+--
+
+DROP TABLE IF EXISTS `chat_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chat_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `roomId` text NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `user_from` text NOT NULL,
+  `target` text NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chat_history`
+--
+
+LOCK TABLES `chat_history` WRITE;
+/*!40000 ALTER TABLE `chat_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `chat_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `info_user`
 --
 
@@ -27,7 +54,7 @@ CREATE TABLE `info_user` (
   `userName` varchar(30) CHARACTER SET utf8 NOT NULL,
   `userPassword` varchar(50) NOT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +63,7 @@ CREATE TABLE `info_user` (
 
 LOCK TABLES `info_user` WRITE;
 /*!40000 ALTER TABLE `info_user` DISABLE KEYS */;
-INSERT INTO `info_user` VALUES (1,'j','c08ac56ae1145566f2ce54cbbea35fa3'),(2,'jkk','33f27d1e53f646749e936448858920c1'),(3,'jk','74b9495fbf5ce041652eddb4254b9511'),(4,'jk','74b9495fbf5ce041652eddb4254b9511'),(5,'jk','74b9495fbf5ce041652eddb4254b9511'),(6,'jk','74b9495fbf5ce041652eddb4254b9511'),(7,'jk','74b9495fbf5ce041652eddb4254b9511'),(8,'k','c08ac56ae1145566f2ce54cbbea35fa3'),(9,'kl','c08ac56ae1145566f2ce54cbbea35fa3'),(10,'jkjj','74b9495fbf5ce041652eddb4254b9511'),(11,'jkjkjk','74b9495fbf5ce041652eddb4254b9511'),(12,'jkjk','74b9495fbf5ce041652eddb4254b9511'),(13,'jkjkjkjk','74b9495fbf5ce041652eddb4254b9511'),(14,'jkjkjkjkjk','74b9495fbf5ce041652eddb4254b9511'),(15,'jkjkjkjkjkjk','74b9495fbf5ce041652eddb4254b9511'),(16,'ji','3abf00fa61bfae2fff9133375e142416'),(17,'hj','ba984cb106d5bcead9bfe67344b89a2a'),(18,'hjhj','c1d2228aad6099939626ffbb05f034f8'),(19,'hjhjhj','c1d2228aad6099939626ffbb05f034f8'),(20,'kkkk','78d1fe0f0064cf6654940c87d99d4456'),(21,'0000','670b14728ad9902aecba32e22fa4f6bd'),(22,'hi','c4bb408471eb7727e59e11385b0a8c19'),(23,'00','670b14728ad9902aecba32e22fa4f6bd'),(24,'9','52c69e3a57331081823331c4e69d3f2e'),(25,'8','21218cca77804d2ba1922c33e0151105'),(26,'5','5b1b68a9abf4d2cd155c81a9225fd158'),(27,'6','f379eaf3c831b04de153469d1bec345e'),(28,'56','670b14728ad9902aecba32e22fa4f6bd'),(29,'90','df780a97b7d6a8f779f14728bccd3c4c'),(30,'9090','df780a97b7d6a8f779f14728bccd3c4c'),(31,'7','f63f4fbc9f8c85d409f2f59f2b9e12d5'),(32,'l','a73f86ae408af70b67141843e7130723'),(33,'78','5379884c5ec4e06879f7400fd40be0d9');
+INSERT INTO `info_user` VALUES (1,'0','670b14728ad9902aecba32e22fa4f6bd'),(2,'9','52c69e3a57331081823331c4e69d3f2e'),(3,'8','21218cca77804d2ba1922c33e0151105'),(4,'7','f63f4fbc9f8c85d409f2f59f2b9e12d5'),(5,'3','1a100d2c0dab19c4430e7d73762b3423');
 /*!40000 ALTER TABLE `info_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-04-03 18:15:52
+-- Dump completed on 2013-04-20 11:18:53
